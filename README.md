@@ -1,11 +1,6 @@
-# [ Academic Relations #002 ] SPARCS Students
+# [ Academic Relations #007 ] SPARCS Students
 
-## How to run (as of 24.05.17)
-
-1. Login to `github` if not already done so.
-2. Run `git submoudle init` && `git submodule update --remote`
-
-<hr/>
+## How to run (as of 24.09.23)
 
 1. Copy `.env.example` to `.env`
 3. Run `pnpm i`
