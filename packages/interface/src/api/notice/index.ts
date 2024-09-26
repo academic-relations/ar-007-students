@@ -1,1 +1,0 @@
-import "./endpoint/apiNtc001";
