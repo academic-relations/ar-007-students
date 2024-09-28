@@ -37,7 +37,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   disabled?: boolean;
   hasError?: boolean;
   value?: string;
-  onChange?: ChangeEventHandler<HTMLInputElement>;
+  onChange?: ChangeEventHandler<HTMLInputElement>; //
 }
 
 const RightContentWrapper = styled.div.withConfig({
