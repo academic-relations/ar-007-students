@@ -3,8 +3,8 @@ import {
   defineAxiosMock,
   UnexpectedAPIResponseError,
 } from "@sparcs-students/web/lib/axios";
-import { apiTmp000 } from "@sparcs-students/interface/api/_example/endpoints/apiTmp000";
 import { useQuery } from "@tanstack/react-query";
+import { apiTmp000 } from "@sparcs-students/interface/api/_example/apiTmp000";
 import { z } from "zod";
 
 // TODO: This might better work using z.discriminatedUnion
