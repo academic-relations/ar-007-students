@@ -84,7 +84,7 @@ const InputWrapper = styled.div`
 `;
 
 // Component
-const PhoneInput: React.FC<PhoneInputProps> = ({
+const PhoneInput: React.FC<PhoneInputProps & { optional?: boolean }> = ({
   label = "",
   placeholder,
   disabled = false,
@@ -92,6 +92,7 @@ const PhoneInput: React.FC<PhoneInputProps> = ({
   handleChange = () => {}, // setValue
   setErrorStatus = () => {},
   onChange = undefined, // display results (complicated)
+  optional = false,
   ...props
 }) => {
   const [error, setError] = useState("");
@@ -117,7 +118,7 @@ const PhoneInput: React.FC<PhoneInputProps> = ({
       const isValidFormat =
         /^(\d{3}-\d{4}-\d{4})$/.test(value) ||
         /^\d*$/.test(value.replace(/-/g, ""));
-      if (!value) {
+      if (!optional && !value) {
         setError("필수로 채워야 하는 항목입니다");
       } else if (!isValidFormat) {
         setError("숫자만 입력 가능합니다");
