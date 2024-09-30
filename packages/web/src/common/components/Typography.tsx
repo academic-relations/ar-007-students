@@ -40,18 +40,6 @@ interface TypographyProps extends TypographyPropsBase {
   fw?: keyof Theme["fonts"]["WEIGHT"];
   ff?: keyof Theme["fonts"]["FAMILY"];
   color?: ThemeColors;
-  type?:
-    | "h1"
-    | "h2"
-    | "h3"
-    | "h4"
-    | "h5"
-    | "h6"
-    | "p"
-    | "p_b"
-    | "span"
-    | "h3_b"
-    | "";
 }
 
 const TypographyInner = styled.div<TypographyProps>`
@@ -63,31 +51,9 @@ const TypographyInner = styled.div<TypographyProps>`
   font-weight: ${({ fw, theme }) => (fw ? theme.fonts.WEIGHT[fw] : "inherit")};
 `;
 
-const H3 = styled(TypographyInner)`
-  font-size: 20px;
-  line-height: 24px;
-  font-weight: ${({ theme }) => theme.fonts.WEIGHT.MEDIUM};
-`;
-
-const H3_B = styled(H3)`
-  font-weight: ${({ theme }) => theme.fonts.WEIGHT.SEMIBOLD};
-`;
-
-const P = styled(TypographyInner)`
-  font-size: 16px;
-  line-height: 20px;
-  font-weight: ${({ theme }) => theme.fonts.WEIGHT.REGULAR};
-`;
-const P_B = styled(TypographyInner)`
-  font-size: 16px;
-  line-height: 20px;
-  font-weight: ${({ theme }) => theme.fonts.WEIGHT.MEDIUM};
-`;
-
 /**
  * ## Typography component.
  * @param {Object} props - Props for the Typography component.
- * @param {("h1"|"h2"|"h3"|"h4"|"h5"|"h6"|"p"|"p_b"|"span"|"h3_b")} [props.type] - Type of typography.
  * @param {React.ReactNode} props.children - Content to be rendered inside the typography element.
  * @param {number} [props.fs] - Font size of the typography element in pixels.
  * @param {number} [props.lh] - Line height of the typography element in pixels.
@@ -96,42 +62,16 @@ const P_B = styled(TypographyInner)`
  * @param {React.HTMLAttributes<HTMLDivElement>} [props.divProps] - Additional props to be passed to the underlying div element.
  *
  * The Typography component is a versatile component that allows rendering text with different styles and types.
- * It accepts either a `type` prop to select a predefined style or individual style props (`fs`, `lh`, `fw`, `color`) to customize the appearance.
- *
- * ### Types and their corresponding styles:
- * - h3: 20px font size, 24px line height, medium (500) font weight
- * - h3_b: Same as h3 but with semibold (600) font weight
- * - p: 16px font size, 20px line height, regular (400) font weight
- * - p_b: Same as p but with medium (500) font weight
+ * It accepts individual style props (`fs`, `lh`, `fw`, `color`) to customize the appearance.
  *
  * The `color` prop accepts either a top-level color key from `Theme["colors"]` or a nested color key in the format `"ColorKey.NestedColorKey"`.
  * The available color keys are defined in the `ThemeColors` type, which is generated based on the structure of `Theme["colors"]`.
  *
- * If no `type` prop is provided, the component will render a generic `TypographyInner` element with the specified style props.
  */
 
 const Typography: React.FC<TypographyProps> = ({
   children = null,
-  type = "",
   ...rest
-}) => {
-  if (type !== "") {
-    const { ...divProps } = rest;
-    switch (type) {
-      case "h3":
-        return <H3 {...divProps}>{children}</H3>;
-      case "h3_b":
-        return <H3_B {...divProps}>{children}</H3_B>;
-      case "p":
-        return <P {...divProps}>{children}</P>;
-      case "p_b":
-        return <P_B {...divProps}>{children}</P_B>;
-      default:
-        return <TypographyInner {...divProps}>{children}</TypographyInner>;
-    }
-  } else {
-    return <TypographyInner {...rest}>{children}</TypographyInner>;
-  }
-};
+}) => <TypographyInner {...rest}>{children}</TypographyInner>;
 
 export default Typography;
