@@ -1,6 +1,6 @@
 /*
 --- 사용 방법 (예시) ---
-<PhoneInput
+<NewPhoneInput
   label="전화번호"
   placeholder="010-XXXX-XXXX"
   value={phone}
@@ -20,20 +20,19 @@ import React, {
 } from "react";
 
 import isPropValid from "@emotion/is-prop-valid";
-
-import { FormProvider, useForm } from "react-hook-form";
-
 import styled, { css } from "styled-components";
 
-import ErrorMessage from "@sparcs-students/web/common/components/Forms/_atomic/ErrorMessage";
-import Label from "@sparcs-students/web/common/components/Forms/_atomic/Label";
+import ErrorMessage from "./_atomic/ErrorMessage";
+import Label from "./_atomic/Label";
 
 export interface PhoneInputProps
   extends InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
   label?: string;
   placeholder: string;
+  disabled?: boolean;
   value?: string;
   handleChange?: (value: string) => void;
+  setErrorStatus?: (hasError: boolean) => void;
   onChange?: ChangeEventHandler<HTMLInputElement>;
 }
 
@@ -85,27 +84,17 @@ const InputWrapper = styled.div`
 `;
 
 // Component
-const PhoneInput2: React.FC<
-  PhoneInputProps & {
-    setErrorStatus?: (hasError: boolean) => void;
-    optional?: boolean;
-  }
-> = ({
+const PhoneInput: React.FC<PhoneInputProps> = ({
   label = "",
   placeholder,
   disabled = false,
   value = "",
   handleChange = () => {}, // setValue
-  onChange = undefined, // display results (complicated)
   setErrorStatus = () => {},
-  optional = false,
+  onChange = undefined, // display results (complicated)
   ...props
 }) => {
-  const formCtx = useForm({
-    defaultValues: {
-      phoneNumber: "",
-    },
-  });
+  const [error, setError] = useState("");
   const [touched, setTouched] = useState(false);
   const inputRef = useRef<HTMLInputElement | null>(null);
   const cursorRef = useRef<number>(0);
@@ -117,32 +106,31 @@ const PhoneInput2: React.FC<
   }, [value]);
 
   useEffect(() => {
+    const hasError = !!error;
+    if (setErrorStatus) {
+      setErrorStatus(hasError);
+    }
+  }, [error, setErrorStatus]);
+
+  useEffect(() => {
     if (touched) {
       const isValidFormat =
         /^(\d{3}-\d{4}-\d{4})$/.test(value) ||
         /^\d*$/.test(value.replace(/-/g, ""));
-
-      if (!optional && !value) {
-        formCtx.setError("phoneNumber", {
-          message: "필수로 채워야 하는 항목입니다",
-        });
+      if (!value) {
+        setError("필수로 채워야 하는 항목입니다");
       } else if (!isValidFormat) {
-        formCtx.setError("phoneNumber", {
-          message: "숫자만 입력 가능합니다",
-        });
+        setError("숫자만 입력 가능합니다");
       } else if (
         value.replace(/-/g, "").length !== 11 ||
         value.slice(0, 3) !== "010"
       ) {
-        formCtx.setError("phoneNumber", {
-          message: "유효하지 않은 전화번호입니다",
-        });
+        setError("유효하지 않은 전화번호입니다");
       } else {
-        formCtx.clearErrors("phoneNumber");
+        setError("");
       }
-      setErrorStatus(!!formCtx.formState.errors.phoneNumber);
     }
-  }, [value, touched, formCtx]);
+  }, [value, touched]);
 
   const handleBlur = () => {
     setTouched(true);
@@ -151,7 +139,6 @@ const PhoneInput2: React.FC<
   const formatValue = (nums: string) => {
     const digits = nums.replace(/\D/g, "");
     let formattedInput = "";
-
     if (digits.length <= 3) {
       formattedInput = digits;
     } else if (digits.length <= 7) {
@@ -159,7 +146,6 @@ const PhoneInput2: React.FC<
     } else if (digits.length <= 11) {
       formattedInput = `${digits.slice(0, 3)}-${digits.slice(3, 7)}-${digits.slice(7)}`;
     }
-
     return formattedInput;
   };
 
@@ -191,29 +177,20 @@ const PhoneInput2: React.FC<
     <InputWrapper>
       {label && <Label>{label}</Label>}
       <InputWrapper>
-        <FormProvider {...formCtx}>
-          <Input
-            {...formCtx.register("phoneNumber", {
-              required: true,
-              onBlur: handleBlur,
-            })}
-            placeholder={placeholder}
-            onChange={onChange ?? handlePhoneValueChange}
-            disabled={disabled}
-            value={formatValue(value)}
-            hasError={!!formCtx.formState.errors.phoneNumber}
-            ref={inputRef}
-            {...props}
-          />
-          {formCtx.formState.errors.phoneNumber && (
-            <ErrorMessage>
-              {formCtx.formState.errors.phoneNumber.message}
-            </ErrorMessage>
-          )}
-        </FormProvider>
+        <Input
+          placeholder={placeholder}
+          hasError={!!error}
+          disabled={disabled}
+          value={formatValue(value)}
+          onChange={onChange ?? handlePhoneValueChange}
+          onBlur={handleBlur}
+          ref={inputRef}
+          {...props}
+        />
+        {error && <ErrorMessage>{error}</ErrorMessage>}
       </InputWrapper>
     </InputWrapper>
   );
 };
 
-export default PhoneInput2;
+export default PhoneInput;
