@@ -6,13 +6,16 @@ import React, {
   useState,
 } from "react";
 
-import isPropValid from "@emotion/is-prop-valid";
-
 import styled, { css } from "styled-components";
 
 import Icon from "@sparcs-students/web/common/components/Icon";
 
 import colors from "@sparcs-students/web/styles/themes/colors";
+
+import {
+  SearchItem,
+  RightContentWrapper,
+} from "@sparcs-students/web/common/components/Forms/SearchItem";
 
 import ErrorMessage from "./_atomic/ErrorMessage";
 import Label from "./_atomic/Label";
@@ -39,22 +42,6 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   value?: string;
   onChange?: ChangeEventHandler<HTMLInputElement>; //
 }
-
-const RightContentWrapper = styled.div.withConfig({
-  shouldForwardProp: prop => isPropValid(prop),
-})`
-  position: absolute;
-  right: 12px;
-  display: flex;
-  align-items: center;
-  pointer-events: none;
-  font-family: ${({ theme }) => theme.fonts.FAMILY.PRETENDARD};
-  font-size: 16px;
-  line-height: 20px;
-  font-weight: ${({ theme }) => theme.fonts.WEIGHT.REGULAR};
-  color: ${({ theme }) => theme.colors.BLACK};
-  justify-content: center;
-`;
 
 const errorBorderStyle = css`
   border-color: ${({ theme }) => theme.colors.RED[600]};
@@ -119,46 +106,6 @@ const SearchList = styled.div`
   overflow-y: auto;
   scrollbar-width: none;
 `;
-
-const SearchItemWrapper = styled.div`
-  display: flex;
-  padding: 4px 12px;
-  align-items: center;
-  gap: 10px;
-  align-self: stretch;
-  border-radius: 4px;
-  color: ${({ theme }) => theme.colors.BLACK};
-  font-family: ${({ theme }) => theme.fonts.FAMILY.PRETENDARD};
-  font-size: 16px;
-  font-style: normal;
-  font-weight: ${({ theme }) => theme.fonts.WEIGHT.REGULAR};
-  line-height: 20px;
-  cursor: pointer;
-  position: relative;
-`;
-
-const SearchItem: React.FC<{
-  selected: string;
-  isSelected: boolean;
-  children: string;
-  onClick: (value: string) => void;
-}> = ({
-  selected = "",
-  isSelected = false,
-  children = "",
-  onClick = () => {},
-}) => (
-  <SearchItemWrapper
-    onClick={() => (children !== selected ? onClick(children) : onClick(""))}
-  >
-    {children}
-    {isSelected && (
-      <RightContentWrapper>
-        <Icon type="check" size={16} />
-      </RightContentWrapper>
-    )}
-  </SearchItemWrapper>
-);
 
 const SearchSelect: React.FC<SearchSelectProps> = ({
   label = "",
