@@ -6,10 +6,6 @@ interface TypographyPropsBase extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
 }
 
-interface TypographyPropsWithType extends TypographyPropsBase {
-  type: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "p_b" | "span" | "h3_b";
-}
-
 type ColorKeys = keyof Theme["colors"];
 type NestedColorKeys<C extends ColorKeys> = C extends keyof Theme["colors"]
   ? Theme["colors"][C] extends string | number
@@ -38,24 +34,27 @@ const getColorFromTheme = (theme: Theme, colorString: ThemeColors) => {
   return theme.colors[colorString as keyof Theme["colors"]];
 };
 
-interface TypographyPropsWithCustomStyles extends TypographyPropsBase {
+interface TypographyProps extends TypographyPropsBase {
   fs?: number;
   lh?: number;
   fw?: keyof Theme["fonts"]["WEIGHT"];
   ff?: keyof Theme["fonts"]["FAMILY"];
   color?: ThemeColors;
+  type?:
+    | "h1"
+    | "h2"
+    | "h3"
+    | "h4"
+    | "h5"
+    | "h6"
+    | "p"
+    | "p_b"
+    | "span"
+    | "h3_b"
+    | "";
 }
 
-type TypographyProps =
-  | (TypographyPropsWithType & {
-      fs?: never;
-      lh?: never;
-      fw?: never;
-      color?: never;
-    })
-  | (TypographyPropsWithCustomStyles & { type?: never });
-
-const TypographyInner = styled.div<TypographyPropsWithCustomStyles>`
+const TypographyInner = styled.div<TypographyProps>`
   color: ${({ color, theme }) =>
     color ? getColorFromTheme(theme, color) : "inherit"};
   font-family: ${({ theme, ff }) => (ff ? theme.fonts.FAMILY[ff] : "inherit")};
@@ -113,10 +112,11 @@ const P_B = styled(TypographyInner)`
 
 const Typography: React.FC<TypographyProps> = ({
   children = null,
+  type = "",
   ...rest
 }) => {
-  if ("type" in rest) {
-    const { type, ...divProps } = rest;
+  if (type !== "") {
+    const { ...divProps } = rest;
     switch (type) {
       case "h3":
         return <H3 {...divProps}>{children}</H3>;
