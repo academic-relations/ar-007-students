@@ -20,8 +20,7 @@ import {
 import ErrorMessage from "../_atomic/ErrorMessage";
 import Label from "../_atomic/Label";
 
-export interface SearchSelectProps
-  extends InputHTMLAttributes<HTMLInputElement> {
+interface SearchSelectProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   placeholder: string;
   errorMessage?: string;

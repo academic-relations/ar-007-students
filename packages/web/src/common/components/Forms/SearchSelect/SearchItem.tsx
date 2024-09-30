@@ -1,9 +1,10 @@
+import React from "react";
+
 import styled from "styled-components";
 
 import Icon from "@sparcs-students/web/common/components/Icon";
 
 import isPropValid from "@emotion/is-prop-valid";
-import PropTypes from "prop-types";
 
 interface SearchItemProps {
   selected: string;
@@ -62,12 +63,5 @@ const SearchItem: React.FC<SearchItemProps> = ({
     )}
   </SearchItemWrapper>
 );
-
-SearchItem.propTypes = {
-  selected: PropTypes.string.isRequired,
-  isSelected: PropTypes.bool.isRequired,
-  children: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
-};
 
 export { SearchItem, RightContentWrapper };
