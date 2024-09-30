@@ -15,10 +15,10 @@ import colors from "@sparcs-students/web/styles/themes/colors";
 import {
   SearchItem,
   RightContentWrapper,
-} from "@sparcs-students/web/common/components/Forms/SearchItem";
+} from "@sparcs-students/web/common/components/Forms/SearchSelect/SearchItem";
 
-import ErrorMessage from "./_atomic/ErrorMessage";
-import Label from "./_atomic/Label";
+import ErrorMessage from "../_atomic/ErrorMessage";
+import Label from "../_atomic/Label";
 
 export interface SearchSelectProps
   extends InputHTMLAttributes<HTMLInputElement> {
