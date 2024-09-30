@@ -86,7 +86,10 @@ const InputWrapper = styled.div`
 
 // Component
 const PhoneInput2: React.FC<
-  PhoneInputProps & { setErrorStatus?: (hasError: boolean) => void }
+  PhoneInputProps & {
+    setErrorStatus?: (hasError: boolean) => void;
+    optional?: boolean;
+  }
 > = ({
   label = "",
   placeholder,
@@ -95,6 +98,7 @@ const PhoneInput2: React.FC<
   handleChange = () => {}, // setValue
   onChange = undefined, // display results (complicated)
   setErrorStatus = () => {},
+  optional = false,
   ...props
 }) => {
   const formCtx = useForm({
@@ -118,7 +122,7 @@ const PhoneInput2: React.FC<
         /^(\d{3}-\d{4}-\d{4})$/.test(value) ||
         /^\d*$/.test(value.replace(/-/g, ""));
 
-      if (!value) {
+      if (!optional && !value) {
         formCtx.setError("phoneNumber", {
           message: "필수로 채워야 하는 항목입니다",
         });
