@@ -208,9 +208,6 @@ importers:
       '@tanstack/react-query':
         specifier: ^5.28.4
         version: 5.28.4(react@18.2.0)
-      '@types/prop-types':
-        specifier: ^15.7.13
-        version: 15.7.13
       axios:
         specifier: ^1.6.7
         version: 1.6.7
