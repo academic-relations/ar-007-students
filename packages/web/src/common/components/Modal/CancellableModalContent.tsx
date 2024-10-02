@@ -1,4 +1,4 @@
-import Button from "@sparcs-students/web/common/components/Button";
+import Button from "@sparcs-students/web/common/components/Button/index";
 import React from "react";
 import styled from "styled-components";
 import Typography from "../Typography";
