@@ -1,6 +1,6 @@
 import React, { HTMLAttributes } from "react";
 import styled from "styled-components";
-import Button from ".";
+import Button from "./Button";
 import Typography from "../Typography";
 import Icon from "../Icon";
 
