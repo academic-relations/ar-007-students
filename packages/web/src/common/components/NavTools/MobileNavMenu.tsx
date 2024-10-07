@@ -32,7 +32,7 @@ const MobileNavMenuInner = styled.div`
   justify-content: flex-start;
   gap: 8px;
 
-  background: ${({ theme }) => theme.colors.BACKGROUND};
+  background: ${({ theme }) => theme.colors.WHITE};
 
   @media (max-width: ${({ theme }) => theme.responsive.BREAKPOINT.xs}) {
     display: none;
