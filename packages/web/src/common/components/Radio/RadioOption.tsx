@@ -22,6 +22,11 @@ const RadioOptionInner = styled.div`
   line-height: 20px;
   font-style: normal;
   font-weight: ${({ theme }) => theme.fonts.WEIGHT.REGULAR};
+  cursor: pointer;
+
+  & > * {
+    pointer-events: none;
+  }
 `;
 
 const RadioOption = <T extends string>({
