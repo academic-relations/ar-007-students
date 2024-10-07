@@ -7,46 +7,25 @@
 const colors = {
   WHITE: "#FFFFFF",
   BLACK: "#333333",
-  PRIMARY: "#0099AD",
-  BACKGROUND:
-    "linear-gradient(180deg, #EAFAFC 0%, #FFFFFF 33.33%, #FFFFFF 66.67%, #FFFFFF 100%)",
-  GREEN: {
-    200: "#E9F9EF",
-    600: "#008B1C",
-  },
-  ORANGE: {
-    200: "#FDF7E6",
-    600: "#FF9211",
-  },
-  BLUE: {
-    200: "#E7F0FF",
-    600: "#065DAC",
-  },
-  PURPLE: {
-    200: "#F6EEFE",
-    600: "#9836EF",
-  },
-  PINK: {
-    200: "#FFF1F9",
-    600: "#DB2777",
-  },
-  YELLOW: {
-    200: "#FFFDE9",
-    600: "#E9A311",
-  },
-
-  MINT: {
-    300: "#92CCD4",
-    800: "#0C7F8E",
-  },
+  PRIMARY: "#00674B",
   GRAY: {
-    100: "#FAFAFA",
-    200: "#EEEEEE",
-    300: "#DDDDDD",
-    600: "#555555",
+    50: "#F3F3F3",
+    100: "#DDDDDD",
+    200: "#C6C6C6",
+    400: "#9B9B9B",
+    700: "#5E5E5E",
+    900: "#393939",
+  },
+  GREEN: {
+    100: "#C3E3D6",
+    300: "#7FBDA4",
+    600: "#298062",
+    800: "#09563F",
   },
   RED: {
-    600: "#DC2626",
+    50: "#FFEEEB",
+    200: "#F5A3A8",
+    700: "#B7202A",
   },
 };
 
