@@ -1,3 +1,12 @@
+/*
+사용법
+
+IconButton으로 쓰고자 하면, iconType prop 전달
+Button으로 쓰고자 하면, iconType prop 전달X
+Custom Children을 넣고자 하면, iconType, buttonText 전달X
+
+*/
+
 "use client";
 
 import React, { HTMLAttributes } from "react";
