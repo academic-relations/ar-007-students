@@ -37,21 +37,23 @@ const Filter: React.FC<FilterProps> = ({
   }, []);
 
   return (
-    <FilterWrapper ref={wrapperRef}>
-      <FilterButton
-        isOpen={isOpen}
-        setIsOpen={setIsOpen}
-        itemList={itemList}
-        selectedList={selectedList}
-      />
-      {isOpen && (
-        <FilterDropdown
+    <div ref={wrapperRef} style={{ display: "inline-flex" }}>
+      <FilterWrapper>
+        <FilterButton
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
           itemList={itemList}
           selectedList={selectedList}
-          setSelectedList={setSelectedList}
         />
-      )}
-    </FilterWrapper>
+        {isOpen && (
+          <FilterDropdown
+            itemList={itemList}
+            selectedList={selectedList}
+            setSelectedList={setSelectedList}
+          />
+        )}
+      </FilterWrapper>
+    </div>
   );
 };
 

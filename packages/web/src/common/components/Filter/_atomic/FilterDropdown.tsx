@@ -27,7 +27,7 @@ const FilterDropdown: React.FC<FilterProps> = ({
   };
 
   return (
-    <Dropdown marginTop={40} maxContent>
+    <Dropdown marginTop={40} maxContent style={{ justifyContent: "right" }}>
       {itemList.map(item => (
         <SelectedItem
           key={item}
