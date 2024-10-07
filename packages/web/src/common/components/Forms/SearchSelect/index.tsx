@@ -43,7 +43,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 const errorBorderStyle = css`
-  border-color: ${({ theme }) => theme.colors.RED[600]};
+  border-color: ${({ theme }) => theme.colors.RED[700]};
 `;
 
 const disabledStyle = css`
@@ -71,7 +71,7 @@ const Input = styled.input<InputProps>`
   }
   &:hover:not(:focus) {
     border-color: ${({ theme, hasError, disabled }) =>
-      !hasError && !disabled && theme.colors.GRAY[300]};
+      !hasError && !disabled && theme.colors.GRAY[100]};
   }
   &::placeholder {
     color: ${({ theme }) => theme.colors.GRAY[200]};
@@ -99,7 +99,7 @@ const SearchList = styled.div`
   opacity: 1;
   background-color: ${({ theme }) => theme.colors.WHITE};
   border-radius: 4px;
-  border: 1px solid ${({ theme }) => theme.colors.GRAY[300]};
+  border: 1px solid ${({ theme }) => theme.colors.GRAY[100]};
   padding: 8px;
   max-height: 280px;
   overflow-y: auto;
