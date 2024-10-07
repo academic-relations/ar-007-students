@@ -15,7 +15,7 @@ const getBackgroundColor = (
   type?: CalendarDateProps["type"],
 ) => {
   if (type === "Default") return theme.colors.PRIMARY;
-  if (type === "Past/Future") return theme.colors.GRAY[300];
+  if (type === "Past/Future") return theme.colors.GRAY[100];
   return theme.colors.WHITE;
 };
 
@@ -78,12 +78,12 @@ const DateContainer = styled.div<CalendarDateProps>`
   }}
   background-color: ${({ type, theme }) => {
     if (type === "Past/Future" || type === "Default") return "transparent";
-    if (type === "Pass") return theme.colors.MINT[300];
+    if (type === "Pass") return theme.colors.GREEN[300];
     return theme.colors.PRIMARY;
   }};
   color: ${({ type, theme }) => {
     if (type === "Default") return theme.colors.BLACK;
-    if (type === "Past/Future") return theme.colors.GRAY[300];
+    if (type === "Past/Future") return theme.colors.GRAY[100];
     return theme.colors.WHITE;
   }};
 `;
@@ -118,11 +118,11 @@ const DateWrapper = styled.div<{
   background: ${({ type, theme }) => {
     switch (type) {
       case "End":
-        return `linear-gradient(to left, rgba(255, 255, 255, 0) 50%, ${theme.colors.MINT[300]} 50%)`;
+        return `linear-gradient(to left, rgba(255, 255, 255, 0) 50%, ${theme.colors.GREEN[300]} 50%)`;
       case "Start":
-        return `linear-gradient(to right, rgba(255, 255, 255, 0) 50%, ${theme.colors.MINT[300]} 50%)`;
+        return `linear-gradient(to right, rgba(255, 255, 255, 0) 50%, ${theme.colors.GREEN[300]} 50%)`;
       case "Pass":
-        return `${theme.colors.MINT[300]}`;
+        return `${theme.colors.GREEN[300]}`;
       default:
         return "transparent";
     }

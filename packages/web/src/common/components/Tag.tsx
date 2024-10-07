@@ -22,9 +22,9 @@ const TagInner = styled.div<{ color: TagColor }>`
   line-height: 16px;
   font-weight: ${({ theme }) => theme.fonts.WEIGHT.MEDIUM};
   color: ${({ theme, color }) =>
-    color === "RED" ? theme.colors.WHITE : theme.colors[color][600]};
+    color === "RED" ? theme.colors.WHITE : theme.colors.GREEN[600]};
   background-color: ${({ theme, color }) =>
-    color === "RED" ? theme.colors.RED[600] : theme.colors[color][200]};
+    color === "RED" ? theme.colors.RED[700] : theme.colors.GREEN[300]};
   border-radius: ${({ theme }) => theme.round.sm};
 `;
 
@@ -32,7 +32,7 @@ interface TagProps extends React.PropsWithChildren {
   color?: TagColor;
 }
 
-const Tag: React.FC<TagProps> = ({ children = <div />, color = "BLUE" }) => (
+const Tag: React.FC<TagProps> = ({ children = <div />, color = "GREEN" }) => (
   <TagInner color={color}>{children}</TagInner>
 );
 

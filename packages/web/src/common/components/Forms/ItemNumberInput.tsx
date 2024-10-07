@@ -30,13 +30,13 @@ const LabelWithIcon = styled.div`
 `;
 
 const StyledInfoIcon = styled(InfoOutlinedIcon)`
-  color: ${({ theme }) => theme.colors.GRAY[300]};
+  color: ${({ theme }) => theme.colors.GRAY[100]};
   cursor: pointer;
   font-size: 16px;
 `;
 
 const errorBorderStyle = css`
-  border-color: ${({ theme }) => theme.colors.RED[600]};
+  border-color: ${({ theme }) => theme.colors.RED[700]};
 `;
 
 const disabledStyle = css`
@@ -62,7 +62,7 @@ const RightContentWrapper = styled.div<{ hasError: boolean }>`
   line-height: 20px;
   font-weight: ${({ theme }) => theme.fonts.WEIGHT.REGULAR};
   color: ${({ theme, hasError }) =>
-    hasError ? theme.colors.RED[600] : theme.colors.GRAY[300]};
+    hasError ? theme.colors.RED[700] : theme.colors.GRAY[100]};
 `;
 
 const Input = styled.input<ItemNumberInputProps & { hasError: boolean }>`
@@ -88,7 +88,7 @@ const Input = styled.input<ItemNumberInputProps & { hasError: boolean }>`
 
   &:hover:not(:focus) {
     border-color: ${({ theme, hasError, disabled }) =>
-      !hasError && !disabled ? theme.colors.GRAY[300] : undefined};
+      !hasError && !disabled ? theme.colors.GRAY[100] : undefined};
   }
 
   &::placeholder {

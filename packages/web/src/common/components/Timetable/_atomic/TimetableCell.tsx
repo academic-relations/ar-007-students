@@ -17,12 +17,12 @@ const styleSwitch = (theme: DefaultTheme, type: TimetableCellType) => {
     case "hover":
       return {
         background: theme.colors.WHITE,
-        border: `1px solid ${theme.colors.GRAY[300]}`,
+        border: `1px solid ${theme.colors.GRAY[100]}`,
       };
     case "selected":
       return {
         background: theme.colors.PRIMARY,
-        border: `1px solid ${theme.colors.MINT[800]}`,
+        border: `1px solid ${theme.colors.GREEN[800]}`,
       };
     case "disabled":
       return {
@@ -31,7 +31,7 @@ const styleSwitch = (theme: DefaultTheme, type: TimetableCellType) => {
       };
     case "past":
       return {
-        background: theme.colors.MINT[300],
+        background: theme.colors.GREEN[300],
         border: `1px solid ${theme.colors.GRAY[200]}`,
       };
     default:
