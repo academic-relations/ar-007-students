@@ -17,7 +17,7 @@ export interface TextInputProps
 }
 
 const errorBorderStyle = css`
-  border-color: ${({ theme }) => theme.colors.RED[600]};
+  border-color: ${({ theme }) => theme.colors.RED[700]};
 `;
 
 const disabledStyle = css`
@@ -53,7 +53,7 @@ const Input = styled.input.attrs<TextInputProps>(({ area }) => ({
   }
   &:hover:not(:focus) {
     border-color: ${({ theme, hasError, disabled }) =>
-      !hasError && !disabled && theme.colors.GRAY[300]};
+      !hasError && !disabled && theme.colors.GRAY[100]};
   }
   &::placeholder {
     color: ${({ theme }) => theme.colors.GRAY[200]};

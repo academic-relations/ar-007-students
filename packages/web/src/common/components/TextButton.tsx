@@ -9,7 +9,7 @@ const StyledTextButton = styled.button<ButtonProps>`
   background: none;
   border: none;
   color: ${({ theme, disabled }) =>
-    disabled ? theme.colors.GRAY[300] : theme.colors.PRIMARY};
+    disabled ? theme.colors.GRAY[100] : theme.colors.PRIMARY};
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   font-size: 16px;
   line-height: 20px;

@@ -44,7 +44,7 @@ const StyledSelect = styled.div<{
   border: 1px solid
     ${({ theme, hasError, isOpen }) => {
       if (isOpen) return theme.colors.PRIMARY;
-      return hasError ? theme.colors.RED[600] : theme.colors.GRAY[200];
+      return hasError ? theme.colors.RED[700] : theme.colors.GRAY[200];
     }};
   border-radius: 4px;
   font-family: ${({ theme }) => theme.fonts.FAMILY.PRETENDARD};
@@ -55,7 +55,7 @@ const StyledSelect = styled.div<{
   &:focus,
   &:hover:not(:focus) {
     border-color: ${({ theme, isOpen }) =>
-      isOpen ? theme.colors.PRIMARY : theme.colors.GRAY[300]};
+      isOpen ? theme.colors.PRIMARY : theme.colors.GRAY[100]};
   }
 
   ${({ disabled }) => disabled && disabledStyle}
@@ -68,7 +68,7 @@ const Dropdown = styled.div`
   width: 100%;
   margin-top: 4px;
   padding: 8px;
-  border: 1px solid ${({ theme }) => theme.colors.GRAY[300]};
+  border: 1px solid ${({ theme }) => theme.colors.GRAY[100]};
   border-radius: 4px;
   background-color: ${({ theme }) => theme.colors.WHITE};
   gap: 4px;
@@ -84,7 +84,7 @@ const Option = styled.div<{ selectable?: boolean }>`
   line-height: 20px;
   font-weight: ${({ theme }) => theme.fonts.WEIGHT.REGULAR};
   color: ${({ theme, selectable }) =>
-    selectable ? theme.colors.BLACK : theme.colors.GRAY[300]};
+    selectable ? theme.colors.BLACK : theme.colors.GRAY[100]};
   ${({ selectable }) =>
     selectable &&
     css`
@@ -103,7 +103,7 @@ const NoOption = styled.div`
   font-weight: ${({ theme }) => theme.fonts.WEIGHT.REGULAR};
   text-align: center;
   pointer-events: none;
-  color: ${({ theme }) => theme.colors.GRAY[300]};
+  color: ${({ theme }) => theme.colors.GRAY[100]};
 `;
 
 const IconWrapper = styled.div`

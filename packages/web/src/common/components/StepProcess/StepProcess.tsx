@@ -30,7 +30,7 @@ const StepContainer = styled.div<{ width: string }>`
   &::before {
     content: "";
     position: absolute;
-    background: ${props => props.theme.colors.GRAY[300]};
+    background: ${props => props.theme.colors.GRAY[100]};
     height: 4px;
     border-radius: 2px;
     width: 100%;
@@ -44,8 +44,8 @@ const StepContainer = styled.div<{ width: string }>`
     position: absolute;
     background: linear-gradient(
       to right,
-      ${props => props.theme.colors.MINT[300]} 100%,
-      ${props => props.theme.colors.GRAY[300]} 100%
+      ${props => props.theme.colors.GREEN[300]} 100%,
+      ${props => props.theme.colors.GRAY[100]} 100%
     );
     height: 4px;
     border-radius: 2px;
