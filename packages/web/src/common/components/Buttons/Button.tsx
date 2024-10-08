@@ -1,11 +1,24 @@
+/*
+사용법
+
+IconButton으로 쓰고자 하면, iconType prop 전달
+Button으로 쓰고자 하면, iconType prop 전달X
+Custom Children을 넣고자 하면, iconType, buttonText 전달X
+
+*/
+
 "use client";
 
 import React, { HTMLAttributes } from "react";
 import styled from "styled-components";
+import Icon from "@sparcs-students/web/common/components/Icon";
+import Typography from "@sparcs-students/web/common/components/Typography";
 
 type ButtonProps = {
   type?: keyof typeof ButtonTypeInner;
-  children: React.ReactNode;
+  children?: React.ReactNode;
+  iconType?: string;
+  buttonText?: string;
 } & HTMLAttributes<HTMLDivElement>;
 
 const ButtonInner = styled.div`
@@ -51,14 +64,53 @@ const ButtonTypeInner = {
   disabled: ButtonDisabledInner,
 };
 
-const Button = ({ type = "default", children, ...divProps }: ButtonProps) => {
+const ButtonWithTextInner = styled.div`
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  display: inline-flex;
+`;
+
+const ButtonWithIconAndText = (iconType: string, buttonText: string) => (
+  <ButtonWithTextInner>
+    <Icon type={iconType} size={16} color="white" />
+    <Typography>{buttonText}</Typography>
+  </ButtonWithTextInner>
+);
+
+const ButtonWithText = (buttonText: string) => (
+  <ButtonWithTextInner>
+    <Typography>{buttonText}</Typography>
+  </ButtonWithTextInner>
+);
+
+const ButtonWithChildren = (children: React.ReactNode) => (
+  <ButtonWithTextInner>{children}</ButtonWithTextInner>
+);
+
+const Button = ({
+  type = "default",
+  children = undefined,
+  iconType = "",
+  buttonText = "",
+  ...divProps
+}: ButtonProps) => {
   const ButtonChosenInner = ButtonTypeInner[type];
+
+  const ButtonContent = () => {
+    if (iconType !== "") return ButtonWithIconAndText(iconType, buttonText);
+    if (buttonText !== "") return ButtonWithText(buttonText);
+    return ButtonWithChildren(children);
+  };
+
   return (
     <ButtonChosenInner
       {...divProps}
       onClick={type === "disabled" ? undefined : divProps.onClick}
     >
-      {children}
+      <ButtonContent />
     </ButtonChosenInner>
   );
 };
