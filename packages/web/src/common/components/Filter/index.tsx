@@ -41,7 +41,7 @@ const Filter: React.FC<FilterProps> = ({
   }, []);
 
   return (
-    <FilterOuterWrapper>
+    <FilterOuterWrapper ref={wrapperRef}>
       <FilterWrapper>
         <FilterButton
           isOpen={isOpen}
