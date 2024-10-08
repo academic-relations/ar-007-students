@@ -5,6 +5,10 @@ import styled from "styled-components";
 import FilterButton from "./_atomic/FilterButton";
 import FilterDropdown, { FilterProps } from "./_atomic/FilterDropdown";
 
+const FilterOuterWrapper = styled.div`
+  display: inline-flex;
+`;
+
 const FilterWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -37,7 +41,7 @@ const Filter: React.FC<FilterProps> = ({
   }, []);
 
   return (
-    <div ref={wrapperRef} style={{ display: "inline-flex" }}>
+    <FilterOuterWrapper>
       <FilterWrapper>
         <FilterButton
           isOpen={isOpen}
@@ -53,7 +57,7 @@ const Filter: React.FC<FilterProps> = ({
           />
         )}
       </FilterWrapper>
-    </div>
+    </FilterOuterWrapper>
   );
 };
 
