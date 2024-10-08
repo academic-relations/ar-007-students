@@ -11,7 +11,7 @@ const Dropdown = styled.div.withConfig({
   width: ${({ maxContent }) => (maxContent ? "max-content" : "100%")};
   margin-top: ${({ marginTop }) => marginTop || 0}px;
   padding: 8px;
-  border: 1px solid ${({ theme }) => theme.colors.GRAY[300]};
+  border: 1px solid ${({ theme }) => theme.colors.GRAY[100]};
   border-radius: 4px;
   background-color: ${({ theme }) => theme.colors.WHITE};
   gap: 4px;
