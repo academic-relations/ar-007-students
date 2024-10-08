@@ -18,10 +18,10 @@ const CheckboxInner = styled.div<{ disabled: boolean }>`
   border-radius: 4px;
   border: 1px solid
     ${({ disabled, theme }) =>
-      disabled ? theme.colors.GRAY[300] : theme.colors.BLACK};
+      disabled ? theme.colors.GRAY[100] : theme.colors.BLACK};
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   background-color: ${({ disabled, theme }) =>
-    disabled ? theme.colors.GRAY[100] : "transparent"};
+    disabled ? theme.colors.GRAY[50] : "transparent"};
 `;
 
 const Checkbox: React.FC<CheckboxProps> = ({
@@ -34,7 +34,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
       <Icon
         type="check"
         size={16}
-        color={disabled ? colors.GRAY[300] : colors.BLACK}
+        color={disabled ? colors.GRAY[100] : colors.BLACK}
       />
     )}
   </CheckboxInner>

@@ -10,7 +10,7 @@ interface BreadCrumbItemProps {
 
 const BreadCrumbInner = styled.div<{ disabled: boolean }>`
   color: ${({ theme, disabled }) =>
-    disabled ? theme.colors.GRAY[300] : theme.colors.PRIMARY};
+    disabled ? theme.colors.GRAY[100] : theme.colors.PRIMARY};
   cursor: ${({ disabled }) => (disabled ? "default" : "pointer")};
 `;
 

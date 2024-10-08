@@ -23,9 +23,9 @@ const StepDot = styled.div<{ step: Step }>`
     ${props => {
       switch (props.step) {
         case Step.After:
-          return props.theme.colors.MINT[300];
+          return props.theme.colors.GREEN[300];
         case Step.Before:
-          return props.theme.colors.GRAY[300];
+          return props.theme.colors.GRAY[100];
         case Step.Current:
         default:
           return props.theme.colors.PRIMARY;
@@ -34,7 +34,7 @@ const StepDot = styled.div<{ step: Step }>`
   background-color: ${props => {
     switch (props.step) {
       case Step.After:
-        return props.theme.colors.MINT[300];
+        return props.theme.colors.GREEN[300];
       case Step.Before:
         return props.theme.colors.GRAY[200];
       case Step.Current:

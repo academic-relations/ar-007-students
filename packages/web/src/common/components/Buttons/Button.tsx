@@ -38,7 +38,7 @@ const ButtonDefaultInner = styled(ButtonInner)`
   background: ${({ theme }) => theme.colors.PRIMARY};
   cursor: pointer;
   &:hover {
-    background: ${({ theme }) => theme.colors.MINT[800]};
+    background: ${({ theme }) => theme.colors.GREEN[800]};
   }
 `;
 
@@ -47,13 +47,13 @@ const ButtonOutlinedInner = styled(ButtonInner)`
   background: ${({ theme }) => theme.colors.WHITE};
   cursor: pointer;
   &:hover {
-    border: 1px solid ${({ theme }) => theme.colors.GRAY[300]};
+    border: 1px solid ${({ theme }) => theme.colors.GRAY[100]};
   }
 `;
 
 const ButtonDisabledInner = styled(ButtonInner)`
-  color: ${({ theme }) => theme.colors.GRAY[300]};
-  border: 1px solid ${({ theme }) => theme.colors.GRAY[300]};
+  color: ${({ theme }) => theme.colors.GRAY[100]};
+  border: 1px solid ${({ theme }) => theme.colors.GRAY[100]};
   background: ${({ theme }) => theme.colors.GRAY[100]};
   cursor: not-allowed;
 `;

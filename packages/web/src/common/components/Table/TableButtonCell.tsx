@@ -33,7 +33,7 @@ const CellText = styled.div<{ isGray: boolean }>`
   line-height: 24px;
   font-weight: ${({ theme }) => theme.fonts.WEIGHT.REGULAR};
   color: ${({ isGray, theme }) =>
-    isGray ? theme.colors.GRAY[300] : theme.colors.BLACK};
+    isGray ? theme.colors.GRAY[100] : theme.colors.BLACK};
 `;
 
 const TableButtonCell: React.FC<TableButtonCellProps> = ({
