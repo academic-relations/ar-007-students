@@ -27,7 +27,6 @@ const StyledNavList = styled(NavList)`
   display: inline-flex;
   padding: 0px 30px;
   align-items: flex-start;
-  gap: 24px;
 
   width: ${({ theme }) => theme.responsive.CONTENT.xxl};
 

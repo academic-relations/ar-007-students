@@ -14,6 +14,7 @@ import Logo from "./_atomic/Logo";
 
 const IdentityBar = styled.div`
   position: relative;
+  align-self: stretch;
   width: 100%;
   height: 5px;
   background-color: ${({ theme }) => theme.colors.PRIMARY};
@@ -22,18 +23,24 @@ const IdentityBar = styled.div`
 const NavInner = styled.div`
   position: relative;
   display: flex;
-  height: 50px;
-  padding: 0px 20px;
+  padding: 0px 24px;
   justify-content: space-between;
   align-items: center;
   align-self: stretch;
 `;
 
+const NavLeftInner = styled.div`
+  display: flex;
+  height: 27px;
+  align-items: center;
+  gap: 10px;
+`;
+
 const StyledNavList = styled(NavList)`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  display: flex;
+  padding: 0px 30px;
+  align-items: center;
+  gap: 24px;
   width: ${({ theme }) => theme.responsive.CONTENT.xxl};
 
   @media (max-width: ${({ theme }) => theme.responsive.BREAKPOINT.xl}) {
@@ -52,6 +59,11 @@ const HeaderInner = styled.div`
   top: 0;
   z-index: 10;
   backdrop-filter: blur(10px);
+  display: flex;
+  padding-bottom: 12px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 11px;
 `;
 
 const Menu = styled.div`
@@ -68,8 +80,10 @@ const Header: React.FC = () => {
     <HeaderInner>
       <IdentityBar />
       <NavInner>
-        <Logo />
-        <Login />
+        <NavLeftInner>
+          <Logo />
+          <StyledNavList highlight keys={navPaths.header} />
+        </NavLeftInner>
         <Menu>
           <Icon
             type="menu"
@@ -77,14 +91,14 @@ const Header: React.FC = () => {
             onClick={() => setIsMobileMenuVisible(!isMobileMenuVisible)}
           />
         </Menu>
-        <StyledNavList highlight keys={navPaths.header} />
+        {isMobileMenuVisible && (
+          <MobileNavMenu
+            keys={navPaths.header}
+            onClose={() => setIsMobileMenuVisible(!isMobileMenuVisible)}
+          />
+        )}
+        <Login />
       </NavInner>
-      {isMobileMenuVisible && (
-        <MobileNavMenu
-          keys={navPaths.header}
-          onClose={() => setIsMobileMenuVisible(!isMobileMenuVisible)}
-        />
-      )}
     </HeaderInner>
   );
 };
