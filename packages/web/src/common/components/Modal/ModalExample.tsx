@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-import Button from "../Button";
+import Button from "../Buttons/Button";
 import Modal from ".";
 
 const ModalBody = styled.div`

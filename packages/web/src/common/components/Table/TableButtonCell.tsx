@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import TextButton from "../TextButton";
+import TextButton from "../Buttons/TextButton";
 
 interface TableButtonCellProps {
   text: string[];
@@ -33,7 +33,7 @@ const CellText = styled.div<{ isGray: boolean }>`
   line-height: 24px;
   font-weight: ${({ theme }) => theme.fonts.WEIGHT.REGULAR};
   color: ${({ isGray, theme }) =>
-    isGray ? theme.colors.GRAY[300] : theme.colors.BLACK};
+    isGray ? theme.colors.GRAY[100] : theme.colors.BLACK};
 `;
 
 const TableButtonCell: React.FC<TableButtonCellProps> = ({

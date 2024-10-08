@@ -5,7 +5,7 @@ import styled from "styled-components";
 const StyledErrorMessage = styled.span`
   display: block;
   padding: 0px 0px 0px 2px;
-  color: ${({ theme }) => theme.colors.RED[600]};
+  color: ${({ theme }) => theme.colors.RED[700]};
   font-family: ${({ theme }) => theme.fonts.FAMILY.PRETENDARD};
   font-weight: ${({ theme }) => theme.fonts.WEIGHT.MEDIUM};
   font-size: 12px;

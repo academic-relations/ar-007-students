@@ -6,7 +6,7 @@ import styled from "styled-components";
 import paths, { Paths } from "@sparcs-students/web/constants/paths";
 import { usePathname } from "next/navigation";
 
-import Button from "../Button";
+import Button from "../Buttons/Button";
 import Icon from "../Icon";
 import MobileNavItem from "./MobileNavItem";
 
@@ -32,7 +32,7 @@ const MobileNavMenuInner = styled.div`
   justify-content: flex-start;
   gap: 8px;
 
-  background: ${({ theme }) => theme.colors.BACKGROUND};
+  background: ${({ theme }) => theme.colors.WHITE};
 
   @media (max-width: ${({ theme }) => theme.responsive.BREAKPOINT.xs}) {
     display: none;

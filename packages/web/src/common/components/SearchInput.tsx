@@ -18,7 +18,7 @@ const SearchInputWrapper = styled.div`
   align-items: center;
   flex: 1;
   &:hover {
-    border-color: ${({ theme }) => theme.colors.GRAY[300]};
+    border-color: ${({ theme }) => theme.colors.GRAY[100]};
   }
   &:focus-within {
     border-color: ${({ theme }) => theme.colors.PRIMARY};

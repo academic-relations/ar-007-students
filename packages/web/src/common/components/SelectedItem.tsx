@@ -38,7 +38,7 @@ const SelectedItem: React.FC<SelectedItemProps> = ({
     <Typography
       fs={16}
       lh={20}
-      color={isDisabled ? "GRAY.300" : "BLACK"}
+      color={isDisabled ? "GRAY.100" : "BLACK"}
       style={{ flex: 1 }}
     >
       {text}
