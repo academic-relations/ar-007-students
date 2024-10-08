@@ -17,7 +17,7 @@ interface NavListProps {
 const NavListInner = styled.div`
   display: inline-flex;
   align-items: flex-start;
-  gap: 60px;
+  gap: 24px;
 `;
 
 const StyledNavItem = styled(NavItem)`
