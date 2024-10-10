@@ -6,90 +6,47 @@
 
 const paths = {
   HOME: { name: "홈", path: "/" },
-  CLUBS: {
-    name: "동아리",
+  STUDENTS0: {
+    name: "총학 소개",
     sub: [
       {
-        name: "동아리 목록",
+        name: "총학 소개",
         path: "/students",
       },
+    ],
+  },
+  STUDENTS1: {
+    name: "공지사항",
+    sub: [
       {
         name: "공지사항",
         path: "/",
       },
+    ],
+  },
+  STUDENTS2: {
+    name: "회칙",
+    sub: [
       {
-        name: "나의 동아리",
-        path: "/",
-      },
-      {
-        name: "동아리 관리",
-        path: "/",
-      },
-      {
-        name: "동아리 등록 신청",
+        name: "회칙",
         path: "/",
       },
     ],
   },
-  VOTING: {
-    name: "의결기구",
+  STUDENTS3: {
+    name: "안건지/회의록",
     sub: [
       {
-        name: "최근 회의",
-        path: "/",
-      },
-      {
-        name: "전동대회(전체동아리대표자회의)",
-        path: "/",
-      },
-      {
-        name: "확대운영위원회",
-        path: "/",
-      },
-      {
-        name: "운영위원회",
-        path: "/",
-      },
-      {
-        name: "분과회의",
+        name: "안건지/회의록",
         path: "/",
       },
     ],
   },
-  COMMUNITY: {
-    name: "소통",
+  STUDENTS4: {
+    name: "예/결산",
     sub: [
       {
-        name: "소통채널 안내",
-        path: "/",
-      },
-      {
-        name: "카카오톡 문의하기",
-        path: "/",
-      },
-      {
-        name: "동아리연합회칙",
-        path: "/",
-      },
-    ],
-  },
-  SERVICE: {
-    name: "서비스 신청",
-    sub: [
-      {
-        name: "대여 사업",
-        path: "/",
-      },
-      {
-        name: "홍보물 인쇄",
-        path: "/",
-      },
-      {
-        name: "활동확인서 발급",
-        path: "/",
-      },
-      {
-        name: "공용공간 비정기사용",
+        name: "예/결산",
         path: "/",
       },
     ],
