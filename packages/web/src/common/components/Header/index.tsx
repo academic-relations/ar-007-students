@@ -66,10 +66,6 @@ const HeaderInner = styled.div`
   gap: 11px;
 `;
 
-const Wrapper = styled.div`
-  border: 1px solid black;
-`;
-
 const Menu = styled.div`
   display: none;
 
@@ -85,12 +81,8 @@ const Header: React.FC = () => {
       <IdentityBar />
       <NavInner>
         <NavLeftInner>
-          <Wrapper>
-            <Logo />
-          </Wrapper>
-          <Wrapper>
-            <StyledNavList highlight keys={navPaths.header} />
-          </Wrapper>
+          <Logo />
+          <StyledNavList highlight keys={navPaths.header} />
         </NavLeftInner>
         <Menu>
           <Icon
