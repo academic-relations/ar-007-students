@@ -201,7 +201,7 @@ const Select: React.FC<SelectProps> = ({
     }
   };
 
-  let selectedLabel: string; // 'let'을 사용하여 변수를 선언합니다.
+  let selectedLabel: string;
 
   if (multi) {
     if (Array.isArray(selectedValue) && selectedValue.length > 0) {
