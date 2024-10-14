@@ -15,8 +15,9 @@ interface SelectProps {
   label?: string;
   errorMessage?: string;
   disabled?: boolean;
-  selectedValue?: string;
-  onSelect?: (value: string) => void;
+  selectedValue?: string | string[];
+  multi?: boolean; // 다중 선택 여부 추가
+  onSelect?: (value: string | string[]) => void;
   setErrorStatus?: (hasError: boolean) => void;
 }
 
@@ -72,10 +73,10 @@ const Dropdown = styled.div`
   border-radius: 4px;
   background-color: ${({ theme }) => theme.colors.WHITE};
   gap: 4px;
-  z-index: 1000; // Ensure the dropdown appears above other content
+  z-index: 1000;
 `;
 
-const Option = styled.div<{ selectable?: boolean }>`
+const Option = styled.div<{ selectable?: boolean; isSelected?: boolean }>`
   gap: 10px;
   border-radius: 4px;
   padding: 4px 12px;
@@ -85,6 +86,8 @@ const Option = styled.div<{ selectable?: boolean }>`
   font-weight: ${({ theme }) => theme.fonts.WEIGHT.REGULAR};
   color: ${({ theme, selectable }) =>
     selectable ? theme.colors.BLACK : theme.colors.GRAY[100]};
+  background-color: ${({ theme, isSelected }) =>
+    isSelected ? theme.colors.GREEN[100] : theme.colors.WHITE};
   ${({ selectable }) =>
     selectable &&
     css`
@@ -136,6 +139,7 @@ const Select: React.FC<SelectProps> = ({
   label = "",
   disabled = false,
   selectedValue = "",
+  multi = false, // 기본값을 false로 설정
   onSelect = () => {},
   setErrorStatus = () => {},
 }) => {
@@ -144,8 +148,11 @@ const Select: React.FC<SelectProps> = ({
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setErrorStatus(!!errorMessage || (!selectedValue && items.length > 0));
-  }, [errorMessage, selectedValue, items.length, setErrorStatus]);
+    const hasError =
+      (multi && Array.isArray(selectedValue) && selectedValue.length === 0) ||
+      (!multi && !selectedValue && items.length > 0);
+    setErrorStatus(!!errorMessage || hasError);
+  }, [errorMessage, selectedValue, items.length, multi, setErrorStatus]);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -175,14 +182,40 @@ const Select: React.FC<SelectProps> = ({
 
   const handleOptionClick = (item: SelectItem) => {
     if (item.selectable) {
-      onSelect(item.value);
+      if (multi) {
+        let newSelectedValue = Array.isArray(selectedValue)
+          ? [...selectedValue]
+          : [];
+        if (newSelectedValue.includes(item.value)) {
+          newSelectedValue = newSelectedValue.filter(val => val !== item.value);
+        } else {
+          newSelectedValue.push(item.value);
+        }
+        onSelect(newSelectedValue);
+      } else {
+        onSelect(item.value);
+      }
+    }
+    if (!multi) {
       setIsOpen(false);
     }
   };
 
-  const selectedLabel =
-    items.find(item => item.value === selectedValue)?.label ||
-    "항목을 선택해주세요";
+  let selectedLabel: string; // 'let'을 사용하여 변수를 선언합니다.
+
+  if (multi) {
+    if (Array.isArray(selectedValue) && selectedValue.length > 0) {
+      selectedLabel = items
+        .filter(item => selectedValue.includes(item.value))
+        .map(item => item.label)
+        .join(", ");
+    } else {
+      selectedLabel = "항목을 선택해주세요";
+    }
+  } else {
+    const foundItem = items.find(item => item.value === selectedValue);
+    selectedLabel = foundItem ? foundItem.label : "항목을 선택해주세요";
+  }
 
   return (
     <SelectWrapper>
@@ -191,13 +224,19 @@ const Select: React.FC<SelectProps> = ({
         <DropdownContainer ref={containerRef}>
           <StyledSelect
             hasError={
-              hasOpenedOnce && !selectedValue && items.length > 0 && !isOpen
+              hasOpenedOnce &&
+              multi &&
+              Array.isArray(selectedValue) &&
+              selectedValue.length === 0 &&
+              !isOpen
             }
             disabled={disabled}
             onClick={handleSelectClick}
             isOpen={isOpen}
           >
-            <SelectValue isSelected={!!selectedValue}>
+            <SelectValue
+              isSelected={multi ? selectedValue.length > 0 : !!selectedValue}
+            >
               {selectedLabel}
             </SelectValue>
             <IconWrapper>
@@ -215,6 +254,12 @@ const Select: React.FC<SelectProps> = ({
                   <Option
                     key={item.value}
                     selectable={item.selectable}
+                    isSelected={
+                      multi
+                        ? Array.isArray(selectedValue) &&
+                          selectedValue.includes(item.value)
+                        : selectedValue === item.value
+                    }
                     onClick={() => handleOptionClick(item)}
                   >
                     {item.label}
@@ -226,11 +271,14 @@ const Select: React.FC<SelectProps> = ({
             </Dropdown>
           )}
         </DropdownContainer>
-        {hasOpenedOnce && !selectedValue && items.length > 0 && (
-          <ErrorMessage>
-            {errorMessage || "필수로 선택해야 하는 항목입니다"}
-          </ErrorMessage>
-        )}
+        {hasOpenedOnce &&
+          multi &&
+          Array.isArray(selectedValue) &&
+          selectedValue.length === 0 && (
+            <ErrorMessage>
+              {errorMessage || "필수로 선택해야 하는 항목입니다"}
+            </ErrorMessage>
+          )}
       </SelectWrapper>
     </SelectWrapper>
   );
