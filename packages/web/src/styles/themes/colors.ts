@@ -27,6 +27,10 @@ const colors = {
     200: "#F5A3A8",
     700: "#B7202A",
   },
+  SPARCS: {
+    main: "#EBA12A",
+    member: "#EBA12A66",
+  },
 };
 
 export default colors;
