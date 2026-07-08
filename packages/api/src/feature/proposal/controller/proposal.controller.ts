@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Query, UsePipes } from "@nestjs/common";
+import { Controller, Get, Query, UsePipes } from "@nestjs/common";
 import {
   apiBudPrp012,
   apiBudPrp013,
@@ -6,8 +6,6 @@ import {
   apiBudPrp015,
   apiBudPrp016,
   apiBudPrp017,
-  apiPrp017,
-  apiPrp020,
   ApiBudPrp012RequestQuery,
   ApiBudPrp013RequestQuery,
   ApiBudPrp014RequestQuery,

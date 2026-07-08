@@ -5,8 +5,6 @@ import {
   NotFoundException,
   ForbiddenException,
 } from "@nestjs/common";
-import { BudgetReportIncomeRepository } from "@sparcs-students/api/feature/report/repository/budget-report-income.repository";
-import { BudgetReportExpenseRepository } from "@sparcs-students/api/feature/report/repository/budget-report-expense.repository";
 import { OrganizationManagerRepository } from "@sparcs-students/api/feature/organization/repository/organization.manager.repository";
 import { DocumentReviewStatusEnum } from "@sparcs-students/interface/common/enum/meeting.enum";
 import { OrderByTypeEnum } from "@sparcs-students/api/common/enums";
@@ -28,10 +26,8 @@ export class ProposalService {
   constructor(
     private readonly budgetProposalIncomeRepository: BudgetProposalIncomeRepository,
     private readonly budgetProposalIncomeRevisionRepository: BudgetProposalIncomeRevisionRepository,
-    private readonly budgetReportIncomeRepository: BudgetReportIncomeRepository,
     private readonly budgetProposalExpenseRepository: BudgetProposalExpenseRepository,
     private readonly budgetProposalExpenseRevisionRepository: BudgetProposalExpenseRevisionRepository,
-    private readonly budgetReportExpenseRepository: BudgetReportExpenseRepository,
     private readonly organizationManagerRepository: OrganizationManagerRepository,
     private readonly budgetProposalIncomeDocumentReviewRepository: BudgetProposalIncomeDocumentReviewRepository,
     private readonly budgetProposalExpenseDocumentReviewRepository: BudgetProposalExpenseDocumentReviewRepository,
