@@ -264,6 +264,8 @@ export class ProposalManagerController {
       student,
       body.operationProposal,
     );
+  }
+
   // 하단은 DocumentReview 관련.
 
   // IncomeDocumentReview 조회
